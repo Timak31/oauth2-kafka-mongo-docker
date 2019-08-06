@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  consumer:
+    container_name: consumer
+    build:
+      context: ./consumer
+    ports:
+      - "8777:8080"
+    command: "mvn clean spring-boot:run"
+  oauth2:
+    container_name: oauth2
+    build:
+      context: ./oauth2
+    ports:
+      - "8778:8080"
+    command: "mvn clean spring-boot:run"
+  producer:
+    container_name: producer
+    build:
+      context: ./producer
+    ports:
+      - "8779:8080"
+    command: "mvn clean spring-boot:run"
+  mongo:
+    container_name: mongo
+    image: mongo
